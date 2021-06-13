@@ -1,0 +1,33 @@
+﻿@model List<WebApplication1.Models.ViewModels.ListProductoViewModels>
+@{
+    ViewBag.Title = "Compras";
+}
+
+<h2>@ViewBag.Title</h2>
+<form method="post">
+    <div class=" row">
+        <div class=" col-md-12">
+
+            <table class="table">
+                <tr>
+                    <td>Codigo</td>
+                    <td>Nombre</td>
+                    <td>Descripción</td>
+                    <td>Precio</td>
+                    <th> Acciones </th>
+                </tr>
+                @foreach (var oElemento in Model)
+                {
+                    <tr>
+                        <td>@oElemento.id</td>
+                        <td>@oElemento.nombre</td>
+                        <td>@oElemento.descripcion</td>
+                        <td>@oElemento.precio</td>
+                        <td><a class="btn btn-danger" href="~/Home/Agrega/@oElemento.id">Agregar</a></td>
+                    </tr>
+                }
+            </table>
+            @Html.ActionLink("Finalizar Pedido", "mostrarCarrito", "Home", null, null)
+        </div>
+    </div>
+</form>
